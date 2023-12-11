@@ -1,4 +1,13 @@
-import { Github, Youtube, Linkedin, Twitter, Instagram, Sun, Moon } from 'lucide-react'
+import {
+  Github,
+  Youtube,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Sun,
+  Moon,
+  Construction
+} from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
 
 type IconProps = {
@@ -6,6 +15,12 @@ type IconProps = {
 }
 
 const BASE_ICONS_CLASSNAME = 'w-5 h-5 dark:text-primary-light text-background-dark'
+
+export const ConstructionIcon = ({ className }: IconProps) => (
+  <Construction
+    className={twMerge(BASE_ICONS_CLASSNAME, className)}
+  />
+)
 
 export const GithubIcon = ({ className }: IconProps) => (
   <Github

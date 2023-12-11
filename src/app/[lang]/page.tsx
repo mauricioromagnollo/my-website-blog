@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge"
 import Image from "next/image"
 
 import { PageUnderConstruction } from "@/components"
-import { Locale } from "@/i18n-config"
+import { Locale } from "@/config"
 import { getDictionary } from "@/lib"
 
 import { PrismicApi } from "@/service"
@@ -22,6 +22,10 @@ export default async function Home({ params: { lang } }: HomeProps) {
 
   return (
     <section className="flex items-center justify-center flex-col mt-4 px-4 md:px-0">
+      <PageUnderConstruction
+        message={dictionary.under_construction_message}
+      />
+
       <div className="max-w-container">
 
         <div className={twMerge(
@@ -37,11 +41,11 @@ export default async function Home({ params: { lang } }: HomeProps) {
           </Text>
         </div>
 
-        <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 mt-8">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-10 mt-8">
           <div>
             <Text variant="h1">Maurício Romagnollo</Text>
-            <Text variant="h4">SOFTWARE ENGINEER</Text>
-            <Text className="mt-2">
+            <Text variant="h4" className="dark:text-primary-light mt-1">SOFTWARE ENGINEER</Text>
+            <Text className="mt-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. In porro eos adipisci neque iure culpa, numquam ducimus architecto corrupti ipsa eius, odio minus ex? Voluptatum eveniet numquam excepturi animi ratione.
             </Text>
           </div>
@@ -63,13 +67,8 @@ export default async function Home({ params: { lang } }: HomeProps) {
           }
         </div>
 
-        <Text>{contact.email}</Text>
-        <Text>{contact.phone}</Text>
+        <Text className="flex justify-center mt-4">{contact.email}</Text>
       </div>
-
-      <PageUnderConstruction
-        message={dictionary.under_construction_message}
-      />
     </section>
   )
 }
