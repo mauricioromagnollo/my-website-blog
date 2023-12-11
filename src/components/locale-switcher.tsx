@@ -2,8 +2,13 @@
 
 // import { ChevronDown } from 'lucide-react';
 import { usePathname, useRouter } from "next/navigation"
-import { Locale, i18n, flagMap, localeName } from "@/i18n-config";
+import { Locale, i18n, flagMap, localeName } from "@/config";
 
+// type LocaleSwitcherProps = {
+//   lang?: Locale
+// }
+
+// export function LocaleSwitcher({ lang }: LocaleSwitcherProps) {
 export function LocaleSwitcher() {
   const pathName = usePathname()
   const router = useRouter()
@@ -27,11 +32,17 @@ export function LocaleSwitcher() {
   return (
     <div className="flex items-center justify-center">
       <select
+        // value={lang}
         onChange={e => handleLocaleChange(e.target)}
         className="w-42 bg-transparent border outline-none rounded-md p-2 text-gray-light"
       >
         {options.map((locale) => (
-          <option key={locale.value} value={locale.value}>{locale.label}</option>
+          <option
+            key={locale.value}
+            value={locale.value}
+          >
+            {locale.label}
+          </option>
         ))}
       </select>
     </div>
