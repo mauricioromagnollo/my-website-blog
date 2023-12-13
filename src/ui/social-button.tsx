@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import { GithubIcon, YoutubeIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from './icons';
 
 type SocialButtonProps = {
-  name: string
+  name: 'github' | 'youtube' | 'linkedin' | 'twitter' | 'instagram' | 'facebook' | 'twitch'
   url: string
 }
 
@@ -20,6 +20,7 @@ export const SocialButton = ({ name, url }: SocialButtonProps) => {
 
   return (
     <a
+      data-testid='social-button'
       href={url}
       target='_blank'
       className={twMerge(

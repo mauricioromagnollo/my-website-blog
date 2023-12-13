@@ -10,9 +10,7 @@ function getLocale(request: NextRequest): string | undefined {
   // @ts-ignore
   const locales: string[] = i18n.locales
 
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-    locales
-  )
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)
 
   const locale = matchLocale(languages, i18n.locales, i18n.defaultLocale)
   return locale
