@@ -29,10 +29,14 @@ const config: Config = {
           light: '#BBE1FA'
         },
         gray: {
-          dark: '#4A5568',
-          default: '#718096',
-          light: '#E2E8F0'
-        }
+          dark: '#878B92',
+          light: '#D5DCE8'
+        },
+        success: '#45DE45',
+        warning: '#F7C948',
+        danger: '#F03E3E',
+        white: '#FAFAFA',
+        black: '#000000'
       }
     }
   },
