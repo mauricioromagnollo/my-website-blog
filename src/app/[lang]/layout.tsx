@@ -15,6 +15,8 @@ const inter = Inter({
 const mPlusRounded = M_PLUS_Rounded_1c({
   subsets: ['latin'],
   weight: ['400', '700'],
+  display: 'swap',
+  adjustFontFallback: false,
   variable: '--font-m-plus-rounded',
 })
 
@@ -43,9 +45,7 @@ export default function RootLayout({ children, params: { lang } }: RootLayoutPro
       </head> */}
       <body className='bg-background-light dark:bg-background-dark text-black dark:text-gray antialiased'>
         <Header />
-        <main>
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>
