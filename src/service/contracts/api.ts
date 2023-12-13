@@ -1,10 +1,17 @@
-import { Contact } from "@/domain"
+import { Locale } from "@/config"
+import { Career, Contact } from "@/domain"
 
 export type Revalidate = {
   cache: 'no-cache' | 'force-cache',
   revalidate: number
 }
 
+type BaseApiMethodsProps = {
+  cache?: 'no-cache' | 'force-cache',
+  lang?: Locale
+}
+
 export interface Api {
-  getContact(revalidate?: Revalidate): Promise<Contact>
+  getContact(props?: BaseApiMethodsProps): Promise<Contact>
+  getCareer(props?: BaseApiMethodsProps): Promise<Career>
 }

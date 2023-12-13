@@ -1,22 +1,23 @@
 import * as prismic from '@prismicio/client'
 
-import { Contact } from "@/domain"
-import { Api, Revalidate } from "@/service/contracts/api"
+import { Career, Contact } from "@/domain"
+import { Api } from "@/service/contracts/api"
+import { Locale } from '@/config'
 
+type BaseApiMethodsProps = {
+  cache?: 'no-cache' | 'force-cache',
+  lang?: Locale
+}
 
 export class PrismicApi implements Api {
   constructor() {}
 
-  async getContact(revalidate?: Revalidate): Promise<Contact> {
-    const accessToken = process.env.PRISMIC_API_TOKEN
-    const repository = process.env.PRISMIC_REPOSITORY || ''
+  async getContact({ cache, lang }: BaseApiMethodsProps): Promise<Contact> {
+    const client = this.makeClient(cache)
 
-    const client = prismic.createClient(repository, {
-      accessToken,
-      fetchOptions: { cache: revalidate?.cache || 'force-cache' },
-    });
-
-    const contact = await client.getByTag('contact')
+    const contact = await client.getByTag('contact', {
+      lang: lang || 'en-US'
+    })
     const data = contact.results[0].data
 
     return {
@@ -24,5 +25,32 @@ export class PrismicApi implements Api {
       phone: data.phone,
       socials: data.socials
     }
+  }
+
+  async getCareer({ cache, lang }: BaseApiMethodsProps): Promise<Career> {
+    const client = this.makeClient(cache)
+
+    const career = await client.getByType('career', {
+      lang: lang || 'en-US'
+    })
+    const data = career.results[0].data
+
+    return {
+      currentPosition: data.current_position,
+      history: data.history,
+    }
+  }
+
+  /**
+   * Private methods
+   */
+  private makeClient(cache?: 'no-cache' | 'force-cache') {
+    const accessToken = process.env.PRISMIC_API_TOKEN
+    const repository = process.env.PRISMIC_REPOSITORY || ''
+
+    return prismic.createClient(repository, {
+      accessToken,
+      fetchOptions: { cache: cache || 'no-cache' },
+    });
   }
 }
