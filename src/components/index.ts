@@ -1,5 +1,6 @@
 export { Footer } from "./footer"
 export { Header } from "./header"
 export { LocaleSwitcher } from "./locale-switcher"
-export { ThemeSwitcher } from "./theme-switcher"
+export { Logo } from "./logo"
 export { PageUnderConstruction } from "./page-under-construction"
+export { ThemeSwitcher } from "./theme-switcher"

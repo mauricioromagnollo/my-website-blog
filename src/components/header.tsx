@@ -1,30 +1,8 @@
-import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 
-import { LocaleSwitcher, ThemeSwitcher } from '@/components'
-import { Text } from '@/ui'
+import { LocaleSwitcher, ThemeSwitcher, Logo } from '@/components'
+import { Container } from '@/ui'
 import { Locale } from '@/config'
-
-function Logo() {
-  return (
-    <Link href='/'>
-      <div className='text-background-light'>
-        <Text
-          variant='h1'
-          className='md:hidden text-background-light'
-        >
-          {'<MR />'}
-        </Text>
-        <Text
-          variant='h1'
-          className='hidden md:block text-background-light'
-        >
-          {'<MR />'}
-        </Text>
-      </div>
-    </Link>
-  )
-}
 
 type HeaderProps = {
   lang?: Locale
@@ -37,7 +15,7 @@ export function Header({ lang }: HeaderProps) {
       'bg-background-dark dark:bg-primary-dark',
       'md:px-0',
     )}>
-      <div className="flex items-center justify-between w-full max-w-container">
+      <Container className='flex items-center justify-between'>
         <Logo />
 
         {/* <Nav /> */}
@@ -46,7 +24,7 @@ export function Header({ lang }: HeaderProps) {
           <ThemeSwitcher />
           <LocaleSwitcher lang={lang} />
         </div>
-      </div>
+      </Container>
     </header>
   )
 }

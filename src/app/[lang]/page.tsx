@@ -6,7 +6,7 @@ import { Locale } from "@/config"
 import { getDictionary } from "@/lib"
 
 import { PrismicApi } from "@/service"
-import { SocialButton, Text } from "@/ui"
+import { Container, SocialButton, Text } from "@/ui"
 import { getHowManyYearsHavePassed } from "@/helpers"
 import { Months } from "@/constants"
 
@@ -24,16 +24,17 @@ export default async function Home({ params: { lang } }: HomeProps) {
   const contact = await api.getContact({ lang })
   const career = await api.getCareer({ lang })
 
+  const yearsOfExperience = getHowManyYearsHavePassed(new Date(2021, Months.May, 1))
+
   return (
     <main className="flex items-center justify-center flex-col mt-4 px-4 md:px-0">
       <PageUnderConstruction
         message={dictionary.under_construction_message}
       />
 
-      <div className="max-w-container w-full">
-
+      <Container>
         <div className={twMerge(
-          "p-2 rounded-lg shadow-md",
+          "p-2 rounded-lg shadow-md border border-accent-dark/30",
           'dark:border dark:border-primary-light',
           'dark:shadow-none'
         )}>
@@ -51,12 +52,10 @@ export default async function Home({ params: { lang } }: HomeProps) {
         )}>
           <div className="text-center md:text-left">
             <Text variant="h1">Maurício Romagnollo</Text>
-            <Text variant="h4" className="dark:text-primary-light mt-1">
-              {career.currentPosition}
+            <Text variant="h4" className="text-accent-light dark:text-primary-light mt-1">
+              {career.currentPosition} - {yearsOfExperience}y
             </Text>
-            <Text className="text-center md:text-left">
-              {`${getHowManyYearsHavePassed(new Date(2021, Months.May, 1))} ${dictionary.home.years_of_experience}`}
-            </Text>
+
             <Text className="mt-4">
               {career.history}
             </Text>
@@ -68,9 +67,10 @@ export default async function Home({ params: { lang } }: HomeProps) {
             width={200}
             height={200}
             className={twMerge(
-              "rounded-full w-36 border-2 border-primary-dark shadow-sm",
-              'md:w-48',
-              'dark:border dark:border-primary-light',
+              "rounded-full w-36 border-4 border-background-dark shadow-md",
+              'sm:w-48',
+              'md:w-52',
+              'dark:border-4 dark:border-primary-light',
             )}
           />
         </div>
@@ -84,7 +84,7 @@ export default async function Home({ params: { lang } }: HomeProps) {
         </div>
 
         <Text className="flex justify-center mt-4">{contact.email}</Text>
-      </div>
+      </Container>
     </main>
   )
 }
