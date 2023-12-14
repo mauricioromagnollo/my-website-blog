@@ -44,7 +44,7 @@ export default function RootLayout({ children, params: { lang } }: RootLayoutPro
         />
       </head> */}
       <body className='bg-background-light dark:bg-background-dark text-black dark:text-gray antialiased'>
-        <Header />
+        <Header lang={lang} />
         {children}
         <Footer />
       </body>

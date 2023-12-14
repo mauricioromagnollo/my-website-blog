@@ -44,7 +44,7 @@ export function Header({ lang }: HeaderProps) {
 
         <div className='flex items-center gap-2'>
           <ThemeSwitcher />
-          <LocaleSwitcher />
+          <LocaleSwitcher lang={lang} />
         </div>
       </div>
     </header>
