@@ -1,9 +1,9 @@
 'use client'
 
-// import { ChevronDown } from 'lucide-react';
 import { usePathname, useRouter } from "next/navigation"
 import { Locale, i18n, flagMap, localeName } from "@/config";
 import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 type LocaleSwitcherProps = {
   lang?: Locale
@@ -38,15 +38,21 @@ export function LocaleSwitcher({ lang  }: LocaleSwitcherProps) {
 
   return (
     <div className="flex items-center justify-center">
+      <label htmlFor="select-language" className="sr-only">Language Select</label>
       <select
+        id='select-language'
         value={locale}
         onChange={e => handleLocaleChange(e.target)}
-        className="w-42 bg-transparent border outline-none rounded-md p-2 text-gray-light"
+        className={twMerge(
+          "w-42 bg-transparent border border-primary-light outline-none rounded-md p-2 cursor-pointer",
+          'text-gray-light'
+        )}
       >
         {options.map((locale) => (
           <option
             key={locale.value}
             value={locale.value}
+            className="p-2 bg-transparent text-background-dark font-bold"
           >
             {locale.label}
           </option>
