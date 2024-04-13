@@ -1,6 +1,6 @@
 import * as prismic from '@prismicio/client'
 
-import { Career, Contact } from "@/domain"
+import { Career, Contact } from "@/models"
 import { Api } from "@/service/contracts/api"
 import { Locale } from '@/config'
 
@@ -10,7 +10,7 @@ type BaseApiMethodsProps = {
 }
 
 export class PrismicApi implements Api {
-  constructor() {}
+  constructor() { }
 
   async getContact({ cache, lang }: BaseApiMethodsProps): Promise<Contact> {
     const client = this.makeClient(cache)
