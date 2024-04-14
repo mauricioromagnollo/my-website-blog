@@ -3,5 +3,11 @@
   "home": {
     "hello": "Hello, I'm an Software Engineer based in Brazil!",
     "about_me": ""
+  },
+  "words": {
+    "have": "I have",
+    "year": "year",
+    "month": "month",
+    "and": "and"
   }
 }
