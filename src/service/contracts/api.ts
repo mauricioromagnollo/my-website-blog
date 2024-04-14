@@ -1,5 +1,5 @@
 import { Locale } from "@/config"
-import { Career, Contact } from "@/domain"
+import { Career, Contact } from "@/models"
 
 export type Revalidate = {
   cache: 'no-cache' | 'force-cache',
