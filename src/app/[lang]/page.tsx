@@ -7,8 +7,8 @@ import { getDictionary } from "@/lib"
 
 import { PrismicApi } from "@/service"
 import { Container, SocialButton, Text } from "@/ui"
-import { getHowManyYearsHavePassed } from "@/helpers"
 import { Months } from "@/constants"
+import { formatCarrerHistory, getHowManyYearsHavePassed } from "@/helpers"
 
 type HomeProps = {
   params: {
@@ -23,8 +23,6 @@ export default async function Home({ params: { lang } }: HomeProps) {
 
   const contact = await api.getContact({ lang })
   const career = await api.getCareer({ lang })
-
-  const yearsOfExperience = getHowManyYearsHavePassed(new Date(2021, Months.May, 1))
 
   return (
     <main className="flex items-center justify-center flex-col mt-4 px-4 md:px-0">
@@ -52,12 +50,15 @@ export default async function Home({ params: { lang } }: HomeProps) {
         )}>
           <div className="text-center md:text-left">
             <Text variant="h1">Maurício Romagnollo</Text>
-            <Text variant="h4" className="text-accent-light dark:text-primary-light mt-1">
-              {career.currentPosition} - {yearsOfExperience}y
+            <Text variant="h2" className="text-accent-light dark:text-primary-light mt-1">
+              {career.currentPosition}
+            </Text>
+            <Text variant="h4" className="text-primary-dark dark:text-accent-light mt-1">
+              {getHowManyYearsHavePassed(new Date(1994, Months.December, 14))} {dictionary.words.year}s
             </Text>
 
             <Text className="mt-4">
-              {career.history}
+              {formatCarrerHistory(career.history, dictionary, lang)}
             </Text>
           </div>
 
