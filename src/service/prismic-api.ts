@@ -15,9 +15,10 @@ export class PrismicApi implements Api {
   async getContact({ cache, lang }: BaseApiMethodsProps): Promise<Contact> {
     const client = this.makeClient(cache)
 
-    const contact = await client.getByTag('contact', {
+    const contact = await client.getByType('contact', {
       lang: lang || 'en-US'
     })
+
     const data = contact.results[0].data
 
     return {
