@@ -26,23 +26,11 @@ export default async function Home({ params: { lang } }: HomeProps) {
 
   return (
     <main className="flex items-center justify-center flex-col mt-4 px-4 md:px-0">
-      <PageUnderConstruction
-        message={dictionary.under_construction_message}
-      />
 
       <Container>
-        <div className={twMerge(
-          "p-2 rounded-lg shadow-md border border-accent-dark/30",
-          'dark:border dark:border-primary-light',
-          'dark:shadow-none'
-        )}>
-          <Text
-            variant="h2"
-            className="text-center text-md md:text-lg"
-          >
-            {dictionary.home.hello}
-          </Text>
-        </div>
+        <PageUnderConstruction
+          message={dictionary.under_construction_message}
+        />
 
         <div className={twMerge(
           'flex flex-col-reverse items-center justify-center mt-4',
