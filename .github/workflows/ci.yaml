@@ -11,14 +11,13 @@ on:
       - .github/workflows/deploy-stg.yaml
       - .github/workflows/autorebase.yaml
       - .github/PULL_REQUEST_TEMPLATE.md
+      - .github/ISSUE_TEMPLATE/**
       - .github/CODEOWNERS.md
       - "vscode/**"
-      - "charts/**"
-      - "benchmark/**"
       - "docs/**"
       - .editorconfig
       - .gitignore
-      - catalog-info.yaml
+      - .eslintrc.json
       - README.md
       - Makefile
       - mkdocs.yml
