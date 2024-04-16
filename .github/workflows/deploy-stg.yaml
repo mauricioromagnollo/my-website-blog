@@ -9,6 +9,26 @@ on:
   push:
     branches:
       - develop
+    paths-ignore:
+      - .github/workflows/deploy-prd.yaml
+      - .github/workflows/deploy-stg.yaml
+      - .github/workflows/autorebase.yaml
+      - .github/PULL_REQUEST_TEMPLATE.md
+      - .github/ISSUE_TEMPLATE/**
+      - .github/CODEOWNERS.md
+      - "vscode/**"
+      - "docs/**"
+      - .editorconfig
+      - .gitignore
+      - .eslintrc.json
+      - README.md
+      - Makefile
+      - mkdocs.yml
+      - requirements.txt
+      - Dockerfile.mkdocs
+      - LICENSE
+      - jest*.js
+      - /tests/**
 
 jobs:
   deploy_stg:
