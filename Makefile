@@ -6,6 +6,10 @@ help: ## Print available commands
 	$(info ========================================)
 .PHONY: help
 
+build: ## Build the project
+	@npm run build
+.PHONY: build
+
 dev: ## Run development mode
 	@npm run dev
 .PHONY: dev
@@ -21,3 +25,7 @@ test-watch: ## Run all tests in watch mode
 test-coverage: ## Run all tests with coverage
 	@npm run test:coverage
 .PHONY: test-coverage
+
+lint: ## Run linter
+	@npm run lint
+.PHONY: lint
