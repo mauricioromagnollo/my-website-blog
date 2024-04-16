@@ -1,17 +1,17 @@
-name: Deploy Staging
+name: Deploy Production
 
 env:
   NODE_VERSION: "20.10.0"
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STG }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_PRD }}
 
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
-  deploy_stg:
+  deploy_prd:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
