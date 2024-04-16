@@ -1,0 +1,26 @@
+name: Autorebase
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  autorebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: develop
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+
+      - name: rebase changes into develop
+        if: ${{ inputs.BRANCH != github.event.repository.default_branch }}
+        run: |
+          git config --global user.email "mauricioromagnollo@gmail.com"
+          git config --global user.name "mauricioromagnollo"
+          git pull --rebase
+          git rebase origin/master
+          git push --force-with-lease origin develop
